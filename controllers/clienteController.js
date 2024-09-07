@@ -45,7 +45,6 @@ exports.actualizarCliente = async (req, res) => {
     identificacion,
     telefono,
     email,
-    password,
     nacionCliente,
     direccion
 
@@ -53,7 +52,7 @@ exports.actualizarCliente = async (req, res) => {
 
   try {
     // Actualizar el usuario
-    const hashedPassword = await bcrypt.hash(password, 10);
+   /*  const hashedPassword = await bcrypt.hash(password, 10); */
     const usuarioActualizado = await User.update(
       { nombre,
         apellido,
@@ -61,7 +60,7 @@ exports.actualizarCliente = async (req, res) => {
         identificacion,
         telefono,
         email,
-        password: hashedPassword
+  /*       password: hashedPassword */
        }, 
       { where: { id :id} } // Condición para encontrar el usuario
     );

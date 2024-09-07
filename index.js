@@ -31,7 +31,7 @@ app.use('/api/empleado', authMiddleware,roleMiddleware('empleado'));
 
 
 //ojo con el force siempre debe estar en false para lo eliminar los datos 
-sequelize.sync({ force:false,alter:true }).then(() => {
+sequelize.sync({ force:false,alter:false }).then(() => {
   app.listen(port, () => {
     console.log('Servidor corriendo en el puerto ', port);
   });
