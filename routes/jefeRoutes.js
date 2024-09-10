@@ -13,6 +13,7 @@ router.get("/mensaje/:emisorId/:receptorId",mensajeController.getConversacion);
 router.get("/jefeShowId/:id",jefeSalaController.getJefeShowId);
 router.get("/showsMiSala/:id",showController.getShowsSala);
 router.get("/pedido/:id",pedidoController.getPedidoForm);
-
+router.put("/pedido/:id",pedidoController.activarPedido);
+router.delete("/pedido/:id",pedidoController.eliminarPedido);
 
 module.exports = router;
