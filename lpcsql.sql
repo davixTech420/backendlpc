@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 10-09-2024 a las 19:39:54
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 11-09-2024 a las 18:52:39
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `lpcsql`
+-- Base de datos: `lpc`
 --
 
 -- --------------------------------------------------------
@@ -62,10 +62,11 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nacionCliente`, `direccion`, `userId`, `createdAt`, `updatedAt`) VALUES
-(1, 'colombia', 'dasdsada', 2, '2024-08-27 02:32:42', '2024-08-27 02:32:42'),
+(1, 'argentina', 'calle novena', 2, '2024-08-27 02:32:42', '2024-09-11 14:47:41'),
 (2, NULL, NULL, 22, '2024-09-10 17:10:58', '2024-09-10 17:10:58'),
 (3, NULL, NULL, 23, '2024-09-10 17:16:42', '2024-09-10 17:16:42'),
-(4, NULL, NULL, 24, '2024-09-10 17:26:15', '2024-09-10 17:26:15');
+(4, NULL, NULL, 24, '2024-09-10 17:26:15', '2024-09-10 17:26:15'),
+(5, NULL, NULL, 25, '2024-09-11 15:28:40', '2024-09-11 15:28:40');
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,6 @@ INSERT INTO `jefesalas` (`id`, `userId`, `salaId`, `createdAt`, `updatedAt`) VAL
 (2, 4, 1, '2024-08-27 15:32:21', '2024-08-27 15:32:21'),
 (4, 13, 2, '2024-08-27 16:08:33', '2024-08-27 16:08:33'),
 (5, 16, 4, '2024-09-05 06:15:23', '2024-09-05 06:15:23'),
-(6, 17, 5, '2024-09-05 06:19:58', '2024-09-05 06:19:58'),
 (7, 19, 6, '2024-09-05 06:24:49', '2024-09-05 06:24:49'),
 (8, 20, 7, '2024-09-05 06:25:16', '2024-09-05 06:25:16'),
 (9, 21, 8, '2024-09-05 06:25:39', '2024-09-05 06:25:39');
@@ -150,7 +150,8 @@ INSERT INTO `mensajes` (`id`, `emisor`, `receptor`, `contenido`, `fechaEnvio`, `
 (10, 2, 13, 'Hola, te saludo estoy interesado en tu Teatro Colon', '2024-08-27', 0, '2024-08-28 00:36:16', '2024-08-28 00:36:16'),
 (11, 4, 2, 'claro dime que tipo de show vas hacer', '2024-08-27', 0, '2024-08-28 01:27:27', '2024-08-28 01:27:27'),
 (12, 2, 4, 'Hola, te saludo estoy interesado en tu Teatro Central', '2024-09-05', 0, '2024-09-05 18:02:33', '2024-09-05 18:02:33'),
-(13, 2, 16, 'Hola, te saludo estoy interesado en tu Teatro Bogota', '2024-09-05', 0, '2024-09-06 02:21:29', '2024-09-06 02:21:29');
+(13, 2, 16, 'Hola, te saludo estoy interesado en tu Teatro Bogota', '2024-09-05', 0, '2024-09-06 02:21:29', '2024-09-06 02:21:29'),
+(14, 25, 4, 'Hola, te saludo estoy interesado en tu Teatro Central', '2024-09-11', 0, '2024-09-11 15:44:13', '2024-09-11 15:44:13');
 
 -- --------------------------------------------------------
 
@@ -174,11 +175,9 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id`, `showId`, `salaId`, `estado`, `empleadosRequeridos`, `empleadosAsignados`, `createdAt`, `updatedAt`) VALUES
-(20, 51, 2, 'completado', 0, '0', '2024-09-10 16:58:12', '2024-09-10 16:59:21'),
-(21, 52, 5, 'pendiente', 0, '0', '2024-09-10 17:13:27', '2024-09-10 17:13:27'),
-(22, 53, 2, 'completado', 0, '0', '2024-09-10 17:15:32', '2024-09-10 17:19:59'),
-(23, 54, 5, 'pendiente', 0, '0', '2024-09-10 17:18:05', '2024-09-10 17:18:05'),
-(24, 55, 5, 'pendiente', 0, '0', '2024-09-10 17:28:43', '2024-09-10 17:28:43');
+(20, 51, 2, 'completado', 0, '0', '2024-09-10 16:58:12', '2024-09-11 15:21:26'),
+(27, 58, 2, 'pendiente', 1, '0', '2024-09-11 15:41:59', '2024-09-11 15:46:48'),
+(28, 59, 2, 'pendiente', 1, '0', '2024-09-11 15:43:06', '2024-09-11 15:46:46');
 
 -- --------------------------------------------------------
 
@@ -205,7 +204,6 @@ INSERT INTO `salas` (`id`, `imagen`, `nombre`, `direccion`, `capacidad`, `estado
 (1, 'https://www.ucentral.edu.co/sites/default/files/inline-images/bogota-instalaciones_0.jpg', 'Teatro Central', 'Cl. 95 #47-15, Barrios Unidos, Bogotá, Cundinamarca', 111, 1, '2024-08-25 19:28:10', '2024-08-25 19:28:10'),
 (2, 'https://bogota.gov.co/sites/default/files/styles/1050px/public/2019-03/archivo_instituto_distrital_de_turismo_12.jpg', 'Teatro Colon', 'Teatro Colon', 501, 1, '2024-08-27 15:46:20', '2024-08-28 01:14:12'),
 (4, 'https://www.ucentral.edu.co/sites/default/files/inline-images/bogota-panoramica2.jpg', 'Teatro Bogota', 'Teatro de Bogotá calle 22 n.° 5-62', 324, 1, '2024-08-27 15:50:44', '2024-08-27 15:50:44'),
-(5, 'https://teatrolibre.com/wp-content/uploads/2023/02/Teatro-Libre-Chapinero-Foto-@Sr.Mao-15-1-1024x683.jpg', 'Teatro Chapinero', 'Cra. 11 #61-80, Bogotá', 250, 1, '2024-09-05 06:19:18', '2024-09-05 06:19:18'),
 (6, 'https://bogotateatralycircense.gov.co/sites/default/files/styles/900_x_515/public/img_salas/Menta%20y%20Verde%20Oscuro%20Ilustracio%CC%81n%20Di%CC%81a%20de%20la%20Tierra%20Tarjeta.jpg?itok=lS07eRuE', 'Teatro Bernardo Romero Lozano', 'Calle 46 No. 28-30', 150, 1, '2024-09-05 06:21:56', '2024-09-05 06:21:56'),
 (7, 'https://bogotateatralycircense.gov.co/sites/default/files/styles/900_x_515/public/img_salas/CIATELTEATRODELAMONTA%C3%91A%20%2821%29.jpg?itok=910imoyB', 'El Teatro de la Montaña', 'Carrera 13 E No. 97-10, KM 5 Vía La Calera - Barrio San Isidro Alto.', 120, 1, '2024-09-05 06:23:10', '2024-09-05 06:23:10'),
 (8, 'https://bogotateatralycircense.gov.co/sites/default/files/styles/900_x_515/public/img_salas/FOTO%201%20TN%20CALLE%2071%20copia.jpg?itok=cFsZfb7z', 'Teatro Nacional Calle 71', 'Calle 71 No. 10-25', 150, 1, '2024-09-05 06:24:03', '2024-09-05 06:24:03');
@@ -236,11 +234,9 @@ CREATE TABLE `shows` (
 --
 
 INSERT INTO `shows` (`id`, `imagen`, `nombre`, `cuposDisponibles`, `fechaPresentar`, `horaInicio`, `horaFin`, `estado`, `salaId`, `clienteId`, `createdAt`, `updatedAt`) VALUES
-(51, '/images/1725987492839-exorcista.jpg', 'Exorcista', 120, '2024-09-19', '07:57:00', '08:57:00', 1, 2, 2, '2024-09-10 16:58:12', '2024-09-10 16:59:21'),
-(52, '/images/1725988407107-after.jpg', 'after', 20, '2024-09-28', '07:12:00', '09:12:00', 0, 5, 22, '2024-09-10 17:13:27', '2024-09-10 17:13:27'),
-(53, '/images/1725988532588-quete.jpg', 'te sigo', 48, '2024-10-04', '07:15:00', '08:15:00', 1, 2, 22, '2024-09-10 17:15:32', '2024-09-10 17:20:00'),
-(54, '/images/1725988684956-cafe.jpg', 'Cafe', 48, '2024-09-28', '07:17:00', '08:17:00', 0, 5, 23, '2024-09-10 17:18:04', '2024-09-10 17:18:04'),
-(55, '/images/1725989323434-dulce.jpg', 'La Tentacion', 49, '2024-09-27', '05:28:00', '06:28:00', 0, 5, 24, '2024-09-10 17:28:43', '2024-09-10 17:28:43');
+(51, '/images/1725987492839-exorcista.jpg', 'Exorcista', 120, '2024-09-19', '07:57:00', '08:57:00', 1, 2, 2, '2024-09-10 16:58:12', '2024-09-11 15:21:26'),
+(58, '/images/1726069319184-allzwt54br6x.png', 'prueba', 12, '2024-09-27', '10:41:00', '11:41:00', 0, 2, 25, '2024-09-11 15:41:59', '2024-09-11 15:46:48'),
+(59, '/images/1726069386426-Captura de pantalla 2024-08-16 100902.png', 'asdasd', 1, '2024-09-27', '11:41:00', '12:41:00', 0, 2, 25, '2024-09-11 15:43:06', '2024-09-11 15:46:46');
 
 -- --------------------------------------------------------
 
@@ -269,7 +265,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nombre`, `apellido`, `tipIdentidad`, `identificacion`, `telefono`, `email`, `password`, `estado`, `role`, `createdAt`, `updatedAt`) VALUES
 (1, 'asd', 'asd', 'C.C', '1231232132', '3243423424', 'asd@asd', '$2a$10$/.jYg26HYEZV5mfApw.JL.GM1rgaCf0Ge86BSLeRjqYiQ3dfkun9e', 1, 'admin', '2024-08-25 19:22:09', '2024-08-25 19:22:09'),
-(2, 'dasdasdasd', 'asdsada', 'C.C', '3243243243', '3246565456', 'clien@clien', '$2a$10$fyloPgMNpMbZww3izD3BvuMDfvckQ0dR7aNaMVjaGNQGJEIiqN60a', 1, 'cliente', '2024-08-27 02:32:40', '2024-08-27 02:32:40'),
+(2, 'dasdasdasd', 'asdsada', 'C.C', '3243243243', '3246565456', 'clien@clien.co', '$2a$10$fyloPgMNpMbZww3izD3BvuMDfvckQ0dR7aNaMVjaGNQGJEIiqN60a', 1, 'cliente', '2024-08-27 02:32:40', '2024-09-11 14:47:41'),
 (4, 'Pedro', 'garcuia', 'C.C', '3123123123', '32432432432', 'jefe@jefe', '$2a$10$jO7bvKuC7YUd/et9T69kC.WEWfxGj0qRq4dv0DVkWnUZdvStXGgZa', 1, 'jefesala', '2024-08-27 15:32:21', '2024-08-27 15:32:21'),
 (13, 'jefe asla 2', 'jefe', 'C.C', '2131232132123', '31233213123', 'jefesala@jefe', '$2a$10$vrR3mjOybHfvZsqSIxzQuORtalJQqC7K2HbtTOwOFAIMjK3eIBFtG', 1, 'jefesala', '2024-08-27 16:08:33', '2024-08-27 16:08:33'),
 (14, 'edward', 'reyes', 'T.I', '1312321321', '3242831232', 'emple@emple', '$2a$10$nsAJJ8GRPUQk/BeGpPtrtOI.rF283qTt2niphcGbWQQ/zIrQF/RYm', 1, 'empleado', '2024-08-28 00:16:15', '2024-08-28 00:16:15'),
@@ -281,7 +277,8 @@ INSERT INTO `users` (`id`, `nombre`, `apellido`, `tipIdentidad`, `identificacion
 (21, 'dasdsad', 'asdasdass', 'C.C', '54353543624', '4656546353', 'jefe8@jefe', '$2a$10$tsyQnKDwEcftn/7CYk64TeksYV18lqWS6gHkgTZlqQnEJqax0837.', 1, 'jefesala', '2024-09-05 06:25:39', '2024-09-05 06:25:39'),
 (22, 'andrea', 'andera', 'C.C', '3213213321', '3124638352', 'andrea@andrea.co', '$2a$10$VkyX/Zk/XqmlE6c/aOZWtegQF0x2Pvy/ZFVdjsR7KMbMSKerVJtH.', 1, 'cliente', '2024-09-10 17:10:57', '2024-09-10 17:10:57'),
 (23, 'pablo', 'armando', 'C.C', '4512315465', '3123532434', 'pablo@pablo.co', '$2a$10$sSEjyJR8AExcTPTBpLKAEu8WTh0S9hSA/dpu0Qewd9npO/iqIThbO', 1, 'cliente', '2024-09-10 17:16:42', '2024-09-10 17:16:42'),
-(24, 'lorena', 'garcia', 'C.C', '1021341654', '1321546546', 'lorena@lorena.co', '$2a$10$a7TpfW06gjSkYoovtmPaeulnqPh9dPT3gITlIVuvSeXAMP1/ibVMO', 1, 'cliente', '2024-09-10 17:26:15', '2024-09-10 17:26:15');
+(24, 'lorena', 'garcia', 'C.C', '1021341654', '1321546546', 'lorena@lorena.co', '$2a$10$a7TpfW06gjSkYoovtmPaeulnqPh9dPT3gITlIVuvSeXAMP1/ibVMO', 1, 'cliente', '2024-09-10 17:26:15', '2024-09-10 17:26:15'),
+(25, 'pedrito', 'garcia', 'C.C', '1321354546', '3135456354', 'pedro@pedro.co', '$2a$10$HNd/HWQNz1Ta0nqhgu8VFOqyANwfUhihwPGzRKB0C6Vy5359No9US', 1, 'cliente', '2024-09-11 15:28:40', '2024-09-11 15:28:40');
 
 -- --------------------------------------------------------
 
@@ -461,7 +458,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
@@ -479,13 +476,13 @@ ALTER TABLE `jefesalas`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `salas`
@@ -497,13 +494,13 @@ ALTER TABLE `salas`
 -- AUTO_INCREMENT de la tabla `shows`
 --
 ALTER TABLE `shows`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas
