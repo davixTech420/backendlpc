@@ -17,9 +17,6 @@ exports.eliminarPedido = async (req, res) => {
     const clienteActualizado = await Shows.destroy(
       { where: { id: id } } // Condición para encontrar el cliente
     );
-
-    
-
     res.status(200).json({ message: 'Eliminado Con Exito' });
   } catch (error) {
     res.status(500).json({ error });
@@ -54,7 +51,33 @@ exports.activarPedido = async (req, res) => {
   }
 };
 
+exports.inactivarPedido = async (req, res) => {
+  const { id } = req.params; // Obtener el ID del cliente desde los parámetros de la solicitud
+  try {
+    // Actualizar el usuario
+   /*  const hashedPassword = await bcrypt.hash(password, 10); */
+    const pedidoActualizado = await Pedidos.update(
+      { 
+        estado:"pendiente"
+       }, 
+      { where: { showId :id} } // Condición para encontrar el usuario
+    );
 
+    // Actualizar el cliente
+    const clienteActualizado = await Shows.update(
+      {
+         estado:false 
+      }, // Campos a actualizar
+      { where: { id: id } } // Condición para encontrar el cliente
+    );
+
+    
+
+    res.status(200).json({ message: 'Inactivado Con Exito' });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
 
 
 exports.getPedidoForm = async (req, res) => {
@@ -99,6 +122,19 @@ const storage = multer.diskStorage({
   
         // Obtener la URL de la imagen desde el archivo subido
         const imageUrl = `/images/${req.file.filename}`; // Construir la URL relativa a la imagen
+  
+
+        const existingPedido = await Shows.findOne({
+          where: {
+            salaId,
+            fechaPresentar,
+            horaInicio
+          }
+        });
+  
+        if (existingPedido) {
+          return res.status(400).json({ message: 'Ya existe un pedido con la misma sala, fecha y hora' });
+        }
   
         // Crear el show
         const resShow = await Shows.create({

@@ -13,9 +13,14 @@ router.get("/jefe/:salaId", jefeSalaController.getJefeId);
 router.post("/mensaje",mensajeController.crearMensaje);
 router.get("/mensaje/:emisorId",mensajeController.getDistinctReceiversBySender);
 router.get("/mensaje/:emisorId/:receptorId",mensajeController.getConversacion);
+
+/*funciones de pedidos*/ 
 router.post("/pedido",pedidoController.crearPedido);
+router.delete("/pedido/:id",pedidoController.eliminarPedido);
+/**/
 router.get("/misShows/:id",clienteController.getShowsCliente);
 router.get("/salaCon",salasController.getSalasConJefe);
+
 
 
 module.exports = router;
